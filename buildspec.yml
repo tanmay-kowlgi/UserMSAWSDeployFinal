@@ -34,7 +34,8 @@ phases:
       - if [ $(jq -r '.projectStatus.status' result.json) = ERROR ] ; then $CODEBUILD_BUILD_SUCCEEDING -eq 0 ;fi
       - echo generating jar
       - echo building the docker image.....
-      - docker build -t $REPOSITORY_URI:latest 
+      - echo $REPOSITORY_URI
+      - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
