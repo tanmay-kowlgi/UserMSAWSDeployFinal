@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   secrets-manager:
-    LOGIN: SonarCredentials:sonartoken
-    HOST: SonarCredentials:host
-    Organization: SonarCredentials:organization
-    Project: SonarCredentials:projectKey
+    LOGIN: SonarCredentials-2:sonartoken
+    HOST: SonarCredentials-2:host
+    Organization: SonarCredentials-2:organization
+    Project: SonarCredentials-2:projectKey
 
 phases:
   install:
@@ -16,8 +16,8 @@ phases:
       - echo Logging into Amazon ECR
       - aws --version
   #   - $(aws ecr get-login --no-include-email --region us-east-2)
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 243268985733.dkr.ecr.ap-south-1.amazonaws.com
-      - REPOSITORY_URI=243268985733.dkr.ecr.ap-south-1.amazonaws.com/userms17march
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 974638066180.dkr.ecr.ap-south-1.amazonaws.com
+      - REPOSITORY_URI=974638066180.dkr.ecr.ap-south-1.amazonaws.com/userms17march
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
